@@ -1,0 +1,132 @@
+<nav class="navbar navbar-expand-md navbar-dark sticky-top" id="mainNav">
+    <div class="container container-nav">
+        <span class="navbar-brand">Очень Нужный Поисковик</span>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto" data-target=".navbar-collapse" data-toggle="collapse">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-logout" (click)="testTask()">Задание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-logout" (click)="descriptionTestTask()">Описание</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="main">
+    <router-outlet></router-outlet>
+</main>
+<footer class="footer">
+    <div class="row justify-content-between">
+        <div class="col-12 col-md-6 text-center">
+            <span class="copyright">Copyright &copy;<span class="site-name"> Изготоаление Поисковиков </span> 2019
+                г.</span>
+        </div>
+        <div class="col-12 col-md-6 text-crnter">
+            <span class="copyright">Email:aser1959g@gmail.com</span>
+        </div>
+    </div>
+</footer>
+
+<div id="counterConfirm" class="counter-modal modal" bsModal #descriptionTestTaskModal="bs-modal" role="dialog"
+    aria-hidden="true" [config]="{backdrop: 'static',keyboard:'true'}">
+    <div class="modal-dialog modal-left">
+        <div class="modal-content">
+            <div class="form-header">
+                <h3>Краткое описание</h3>
+                <div class="close-modal-right" (click)="descriptionTestTask(false)"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h4 class="section-subheading">Программа выполнена по мотивам тестового задания&nbsp;! </h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p><b>Функциональные особенности.</b></p>
+                <ul>
+                    <li>Поиск осуществляется <b>только</b> при вводе на <b>английском языке</b>.</li>
+                    <li><b>Кириллица игнорируется API.</b></li>
+                    <li>Если вводить на кириллице всегда будет приходить сообщение <b>"Слишком много результатов. Добавьте
+                        еще буквы в строку запроса !"</b>.</li>
+                    <li>API <b>игнорирует</b> поиск по <b>части слова</b>. Надо вводить все слово <b>полностью</b> !</li>
+                    <li>Поиск при внесении более <b>4 символов</b> запускается <b>автоматически</b> и появляются первые результаты (&nbsp;максимум 10&nbsp;) в выпадающем списке.</li>
+                    <li>Если кликнуть по элементу списка - откроется карточка фильма и данные о нем попадут в историю просмотра.</li>
+                    <li>При нажатии кнопки «Поиск», <span class="d-none d-lg-inline" >справа</span><span class="d-inline d-lg-none" >снизу</span> появляется таблица с результатами (&nbsp;максимально 20&nbsp;),
+                        соответствующими введенному значению в поле поиск и кнопкой «Следующие 20».</li>
+                    <li>При нажатии кнопки «Следующие 20» появляется следующие 20 результатов поиска (&nbsp;если есть&nbsp;) и кнопка
+                        «Предыдущие 20».</li>
+                    <li>С помощью кнопок «Следующие 20» и «Предыдущие 20» можно искать нужные фильмы и кликая по ним, прoсматривать их в карточке.</li>
+                    <li>Если в карточке кликнуть по  кнопке «Русский» - произойдет перевод информации о фильме на русский язык.</li>
+                    <li>Если в карточке кликнуть по  кнопке «Вернуться» - вернетесь к поиску. При этом все ваши действия до этого будут сохранены.</li>
+                    <li>После просмотра данные о фильме попадают в историю просмотра ( таблица <span class="d-none d-md-inline" >слева</span><span class="d-inline d-md-none" >сверху</span> ).</li>
+                    <li>Если в истории просмотров <span *ngIf="isTouch;else unTouch" >коснуться ненужного фильма</span><ng-template #unTouch><span>навести курсор на ненужный фильм</span></ng-template>, справа появится кнопка, нажав на которую можно удалить фильм из истории просмотров.</li>
+                    <li>Можно изменять максимальное количество фильмов в истории просмотров .</li>
+                    <li>Данные истории просмотров и максимальное количество фильмов в ней, сохраняются в <b>localStorage</b>.</li>
+                    <li>Можно искать со смартфонов.</li>
+                </ul>    
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block-small" (click)="descriptionTestTask(false)"><i class="fa fa-close"></i> Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="counterError" class="counter-modal modal" bsModal #testTaskModal="bs-modal" role="dialog" aria-hidden="true">
+     <div class="modal-dialog modal-right">
+        <div class="modal-content">
+            <div class="form-header form-header-warning">
+                <h3>Тестовое задание</h3>
+                <div class="close-modal-left" (click)="testTask(false)"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h4 class="section-subheading">Разработчик Angular 7 (Front-End)</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h5>Необходимо создать приложение для поиска фильмов</h5>
+                <p><b>Приложение должно позволять искать фильмы по названию, использую базу данных OMDb, просматривать
+                        карточку фильма и сохранять историю просмотренных карточек.</b></p>
+                <b>Функциональные требования.</b>
+                <ol>
+                    <li>На экране приложения должна быть строка поиска по названию фильма и кнопка поиск;</li>
+                    <li>После ввода первых 5 символов названия система должна предлагать несколько подходящих фильмов
+                        на выбор (например, в выпадающем списке);</li>
+                    <li>Если пользователь выбрал фильм из списка с подсказками, то приложение должно открыть карточку
+                        этого фильма с описанием.</li>
+                    <li>Если пользователь не выбрал ничего из списка подсказок, а нажал клавишу поиск, то на форме
+                        приложения показывается первые 20 записей с названиями фильмов (и возможно некоторой
+                        дополнительной информацией).</li>
+                    <li>Если пользователь нажимает на название фильма в получившейся таблице, то система открывает
+                        карточку этого фильма с описанием. (как в пункте 3).</li>
+                    <li>Дополнительно должна быть показана история 10 последних просмотренных карточек.</li>
+                    <li>Если пользователь нажимает на строку в истории последних карточек, то должна открыться форма с
+                        описанием фильма. (как в пункте 3)</li>
+                </ol>
+                <b>Требования к дизайну.</b>
+                <ol>
+                    <li>Дизайн, цвета и расположения элементов, можно выбрать любые на ваш вкус.</li>
+                </ol>
+                <b>Технические требования:</b>
+                <ol>
+                    <li>Классическое SAP приложение</li>
+                    <li>Использование Angular 7 или выше</li>
+                    <li>Использование ngrxl</li>
+                    <li>Данные с информацией о фильмах нужно получать по OMDb API</li>
+                </ol>
+                <b>Ссылки:</b>
+                <ol>
+                    <li> http://www.omdbapi.com/</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning btn-block-small" (click)="testTask(false)"><i class="fa fa-close"></i> Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

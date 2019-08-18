@@ -1,0 +1,94 @@
+<div class="row" >
+    <div class="col-lg-8 col-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div *ngIf="(movies$ | async).length !== 0">
+                    <div class="navigation_movies20 text-center">
+                        <h6>История просмотров 
+                            <span>
+                                <select class="select btn-success" id="perPage"
+                                    [(ngModel)]="maxStoryViews" (change)="setMaxStoryViews()">
+                                    <option *ngFor="let max of maxStoryViewsOptions" [value]="max.value">{{max.label}}
+                                    </option>
+                                </select>
+                            </span> фильмов
+                        </h6>
+                    </div>
+                    <div class="movies-history">
+                        <table id="moviesHistory" class="table table-hover table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Название фильма</th>
+                                    <th scope="col" class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let movie of movies$ | async; let i=index"
+                                    (click)="navigateToMovie(movie.imdbID)">
+                                    <td>{{ i+1 }}.</td>
+                                    <td>{{ movie.Title }}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-danger btn-sm btn-delete" type="button"
+                                        (click)="deleteMovieHistory(movie.imdbID,movie.Title,$event)"><i class="fa fa-close"></i></button>                                        
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 search-movie">
+                <div class="navigation_movies20 text-center">
+                    <h2>Найти фильм</h2>
+                </div>
+                <div class="dropdown">
+                    <div class="input-group mb-3">
+                        <input #searchField class="form-control" placeholder="Введите часть названия фильма"
+                            autocomplete="off" (keyup)="keyUp.next($event)">
+                        <div class="input-group-append">
+                            <button #searchResult *ngIf="searchField.value" class="btn btn-danger" type="button"
+                                (click)="clearSearch()"><i class="fa fa-close"></i></button>
+                            <button *ngIf="beginViewPage && searchField.value" class="btn btn-success" type="textt"
+                                (click)="search20Movies()">Поиск</button>
+                        </div>
+                    </div>
+                    <div class="dropdown-content" [ngClass]="{show: moviesSearch}">
+                        <a *ngFor="let film of moviesSearch" (click)="navigateToMovie(film.imdbID,true)">{{film.Title}}</a>
+                    </div>
+                    <small class="form-text text-muted text-center">Запускается после ввода 5 символов (только английские).</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="visibleMovies20" class="col-lg-4 col-12">
+        <div class="navigation_movies20 d-flex justify-content-between">
+            <button class="btn btn-sm btn-warning" [ngClass]="{hidden_element:numberViewPage <=2}"
+                (click)="search20Movies(true)">Предыдущие 20</button>
+            <button class="btn btn-sm btn-success"
+                [ngClass]="{hidden_element:numberViewPage <= 0 || beginViewPag || viewsEnd}"
+                (click)="search20Movies()">Следующие 20</button>
+        </div>
+        <div>
+            <div class="movies20">
+                <table class="table table-hover table-sm table-fixed">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> Название <span class="d-none d-lg-inline" >фильма</span></th>
+                            <th scope="col" class="text-center">Тип</th>
+                            <th scope="col" class="text-center">Год</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let film20 of movies20$ | async" (click)="navigateToMovie(film20.imdbID,true)">
+                            <td>{{ film20.Title }}</td>
+                            <td class="text-center">{{ film20.Type }}</td>
+                            <td class="text-center">{{ film20.Year }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

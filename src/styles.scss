@@ -1,0 +1,263 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'Debbyscript';
+  	src: url("./assets/css/fonts/debby_ru-webfont.eot");
+  	src: url("./assets/css/fonts/debby_ru-webfont.eot?#iefix") format("embedded-opentype"), 
+  	     url("./assets/css/fonts/debby_ru-webfont.woff2") format("woff2"), 
+  	     url("./assets/css/fonts/debby_ru-webfont.woff") format("woff"), 
+  	     url("./assets/css/fonts/debby_ru-webfont.ttf") format("truetype"), 
+  	     url("./assets/css/fonts/debby_ru-webfont.svg#debbyscript") format("svg");
+  	font-weight: normal;
+  	font-style: normal;
+}
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$primary-nav: #7ABA4A !default;
+$brand-secondary:           #777;
+$brand-primary:             #446E9B;
+$brand-success:             #3CB521;
+$brand-info:                #3399F3;
+$brand-warning:             #D47500;
+$brand-danger:              #CD0200;
+
+@mixin btn-shadow($color){
+    @include gradient-y-three-colors(lighten($color, 15%), $color, 50%, darken($color, 4%));
+    filter: none;
+    border: 1px solid darken($color, 10%);
+}
+
+@mixin gradient-y-three-colors($start-color: $blue, $mid-color: $purple, $color-stop: 50%, $end-color: $red) {
+    background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+    background-repeat: no-repeat;
+}
+
+@mixin serif-font {
+    font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin script-font {
+    font-family: Debbyscript, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin body-font {
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin heading-font {
+    font-family: Alegreya,'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+html, body,main {
+    min-height: 585px;
+}
+
+main {
+	padding: 40px 20px 70px 20px;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto Slab', 'Roboto', sans-serif;
+	background-color: #e6ffec!important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-open .container-fluid,
+.modal-open .container {
+    filter: blur(2px) grayscale(40%);
+}
+
+.modal-footer {
+    justify-content: center;
+    padding: 0.5rem !important;
+}
+
+.modal-footer> :not(:first-child) {
+    margin-left: 0rem;
+}
+
+.form-header {
+    position: relative;
+    @include btn-shadow($brand-success);
+    color: #FFF;
+    text-align: center;
+    padding: 5px 10px;
+    &.form-header-blue {
+        @include btn-shadow($brand-primary);
+    } 
+
+    &.form-header-imain {
+        padding: 40px 20px;
+    }nfo {
+        @include btn-shadow($brand-info);
+	}
+	&.form-header-warning {
+        @include btn-shadow($brand-warning);
+    }
+}
+
+.double-button {
+    margin-top: 10px;
+}
+
+.close-modal-right,
+.close-modal-left {
+    position: absolute;
+    top: -26px;
+    width: 31px;
+    height: 31px;
+    font-size: 50px;
+    cursor: pointer;
+    background: url(assets/img/close.png);
+    opacity: 0.5;
+}
+
+.close-modal-right {
+    right: -26px;
+}
+
+.close-modal-left {
+    left: -26px;
+}
+
+.close-modal-right:hover {
+    opacity: 1; 
+}
+
+.close-modal-left:hover {
+    opacity: 1;
+}
+
+.container-form {
+    padding: 15px 15px;
+}
+
+.contact-modal {
+    padding-right: 0px !important;
+    width: 100%;
+    .modal-dialog {
+        margin: 1rem;
+        max-width: 100%;
+    }
+    .modal-content {
+        text-align: left;
+        h2 {
+            font-size: 3em;
+            margin-bottom: 15px;
+		}
+        p {
+            margin-bottom: 30px;
+        }
+        p.item-intro {
+            font-size: 16px;
+            font-style: italic;
+            margin: 20px 0 30px;
+            font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        }
+        ul.list-inline {
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        img {
+            margin-bottom: 30px;
+        }
+        button {
+            cursor: pointer;
+        }
+    }
+}
+
+.modal-left,
+.modal-right {
+    width: 100%;
+    float: none;
+    height: auto;
+    margin: 0;
+}
+
+.modal-dialog {
+    max-width: 100%;
+    h4.section-subheading {
+        font-size: 1.3em;
+        font-weight: 500;
+        font-style: italic;
+        margin-bottom: 0px;
+        margin-top: 0.5rem;
+        line-height: 1;
+        text-transform: none;
+        padding: 0 10px;
+        @include serif-font;
+    }
+}
+
+@media (max-width:768px) {
+    .close-modal-right,
+    .close-modal-left {
+        right: 5px;
+        top: 5px;
+        left: auto;
+    }
+    .form-header {
+        h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (min-width:576px) {
+    .modal-dialog {
+        .modal-body {
+            padding: 1rem 2rem;
+        }
+    }        
+    .modal-left,
+    .modal-right {
+        width: 60%;
+    }
+   .modal-right {
+        float: right;
+        margin: 50px 15px 0 0;
+    }
+    .modal-left { 
+        float: left;
+        margin: 50px 0 0 15px;
+    }
+}  
+
+@media (max-width:576px) {
+    html, body,main {
+        min-height: 400px;
+    }
+    main {
+        padding: 0 10px 70px 10px;
+    }
+    .modal-dialog {
+        width: 100%;
+    }    
+    .modal-left,
+    .modal-right {
+        width: 100%;
+    }
+    .btn-block-small {
+        display: block;
+        width: 100%;
+    }
+}

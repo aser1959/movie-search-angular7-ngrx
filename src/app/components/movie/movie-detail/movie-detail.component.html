@@ -1,0 +1,20 @@
+<div class="movie_card">
+    <h1>Карточка фильма</h1>
+    <div *ngIf="movie" class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <img *ngIf="movie.Poster != 'N/A'" align="center" src="{{movie.Poster}}" class="img-fluid">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 desc">
+            <h3>{{movie.Title}}</h3>
+            <p><b>Тип:</b> {{movie.Type}}</p>
+            <h5>Режисер: {{movie.Director}}</h5>
+            <h6>Актеры: {{movie.Actors}}</h6>
+            <p><b>Жанр: </b> {{movie.Genre}}</p>
+            <p *ngIf="movie.Plot != 'N/A'"><b>Сюжет:</b> {{movie.Plot}}</p>
+            <div class="desc-footer d-flex justify-content-between">
+            <button *ngIf="!russianText" class="btn btn-block-small btn-success" (click)="yandexTranslate()"><i class="fa fa-sm fa-language"></i> Русский</button>
+            <button class="btn btn-block-small btn-warning" (click)="goBack()"><i class="fa fa-undo"></i> Вернуться</button>
+            </div>
+        </div>
+    </div>
+</div>

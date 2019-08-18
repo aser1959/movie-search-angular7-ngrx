@@ -1,0 +1,58 @@
+.movie_card {
+    margin: -50px 100px 50px 100px;
+    padding: .5em;
+    position: relative;
+    h1 {
+        color: #D47500;
+        margin: 0.5em;
+        text-align: center;
+    }
+    img {
+       //height: 100%;
+       width: 300px;
+       //border-radius: 50%
+    }
+    span{
+        display: block;
+        color: #888;
+        position: absolute;
+        left: 20x;
+    }    
+    .desc {
+        padding: 0 2em;
+        border-left:4px solid #124e1c;
+        h3 {
+            color: #124e1c;
+        }   
+        p {
+            line-height:2;
+            color:#888;
+        } 
+    }
+}
+
+@media (max-width: 577px) {
+    .movie_card {
+        margin: -50px 0 50px 0px;
+        img {
+            width: 100%;
+        }  
+        h1 { 
+            font-size: 1.4rem;
+        }  
+        .desc {
+            margin-top: 1em;
+            border-left:none;
+            p {
+                line-height:1.5;
+            }  
+            h3 {
+                font-size: 1.5rem; 
+                text-align: center;    
+            } 
+            .desc-footer {
+                display: block !important;
+            }                  
+        }      
+    }
+}

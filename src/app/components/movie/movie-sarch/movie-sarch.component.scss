@@ -1,0 +1,123 @@
+.form-text {
+    margin-top: -0.75rem;
+}
+
+
+.btn:focus, .btn:active {
+    outline: 0 !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    outline-style: none !important;
+    box-shadow: 0 0 0 0 rgba(0,123,255,0)!important;
+}
+.btn-delete {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    visibility:  hidden;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } 
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    margin-top: -25px;
+    z-index: 1;
+    a {
+        color: black;
+        padding: 5px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    a:hover {
+        background-color: #3CB521;
+        color: white;
+    }
+}
+.show {
+    display:block;
+}
+
+.movies20 {
+    border: 1px solid #3CB521;
+    background-color: #f6f6f6;
+    max-height: 460px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.navigation_movies20 {
+    min-height: 30px;
+    padding: 5px 0;
+}
+
+.hidden_element {
+    visibility:  hidden;
+}
+
+.movies-history {
+    border: 1px solid #3CB521;
+    background-color: #f6f6f6;
+    max-height: 460px;
+    overflow: auto;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+table {
+    background-color: #f6f6f6;
+    tbody {
+        tr {
+            cursor: pointer;
+        }
+        tr:hover {
+            background-color: #3CB521 !important;
+            color: white !important;
+            .btn-delete {
+                visibility: visible;
+            }        
+        }
+
+    }
+}
+
+@media (max-width:577px) {
+    .dropdown-content {
+        position: static;
+        max-height: 200px;
+        margin-top: -15px;
+        overflow: auto;
+    }
+  
+    .movies20 {
+        max-height: 300px;
+    }
+
+    .movies-history {
+        max-height: 300px;
+    }
+  
+    .search-movie {
+        margin: 20px 10px; 
+        border: 2px solid #3CB521;
+    }
+
+    .form-text {
+        margin-top: 0;
+    }
+}
